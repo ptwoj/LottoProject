@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lotto.dao.BuyMapper">
+
+    <!-- 사용자의 돈을 업데이트하는 쿼리 -->
+    <update id="updateUserMoney">
+        UPDATE user
+        SET money = money - #{MONEY}
+        WHERE email = #{email}
+    </update>
+
+    <!-- 로또 상태를 업데이트하는 쿼리 -->
+    <update id="updateLottoStatus">
+        UPDATE lottonumber
+        SET status = true
+        WHERE email = #{email} and lotto_numbers = #{lottoNumbers}
+    </update>
+
+    <!-- 이메일로 로또 번호를 조회하는 쿼리 -->
+    <select id="findByEmail" resultType="LottoNumber">
+        select *
+        from lottonumber
+        where email = #{email}
+    </select>
+
+    <!-- 사용자에게 돈을 충전하는 쿼리 -->
+    <update id="chargeMoney">
+        UPDATE user
+        SET money = money + #{money}
+        WHERE email = #{email}
+    </update>
+
+    <!-- 사용자의 돈을 조회하는 쿼리 -->
+    <select id="findMoney" resultType="int">
+        select money
+        from user
+        where email = #{email}
+    </select>
+
+</mapper>

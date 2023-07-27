@@ -1,0 +1,10 @@
+mybatis를 통한 작업방법
+1. resources -> sqlmap에서 sql구문을 만들고 namespace(mapper랑 연결하기위한 주소)와
+ id를 설정
+resultType은 alias이름을 입력 alias는 config에서 type(dto주소)과 alias(별명) 설정한 alias이다
+2..dao 폴더에서 인터페이스 mapper를 만든다(sqlMap을 부르기 위함)
+3. service에서 mapper를 호출하도록 만드는데 인터페이스를 만들어서 해도 되고 
+바로 사용해도 된다
+4.controller에서 postmapping ModelAndView로 만드는데
+request를 만들고 request는 유저한테 받아오는 형식(form에서 받아오는 형식)에 따라 만들고
+ dto는 db에서 받아오는 형식(select 컬럼형식)에 따라 만든다 일부분만 사용하기 위해 쓴다.

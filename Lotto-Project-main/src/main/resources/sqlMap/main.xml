@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lotto.dao.ShoppingMapper">
+    <insert id="lottoShopping">
+        insert into lottoNumber (email, lotto_numbers, draw_date)
+        values (#{email}, #{lottoNumber}, #{drawDate})
+    </insert>
+    <select id="shoppingList" resultType="Main">
+        select
+        *
+        from lottoNumber
+        where email = #{email} and status = 0
+    </select>
+    <select id="percentList" resultType="Main">
+        select
+        *
+        from lottoNumber
+    </select>
+    <select id="buyList" resultType="Main">
+        select
+        *
+        from lottoNumber
+        where email = #{email} and status = 1
+    </select>
+    <select id="latestDrawDate" resultType="String">
+        select
+        draw_date
+        from winningNumber order by draw_date desc limit 1;
+    </select>
+</mapper>

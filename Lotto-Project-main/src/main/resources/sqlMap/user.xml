@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--SQL 매핑 파일의 루트 요소, 해당 매핑 파일이 com.lotto.dao.UserMapper 인터페이스와 매핑 -->
+<mapper namespace="com.lotto.dao.UserMapper">
+
+    <!--회원가입 쿼리-->
+    <!-- useGeneratedKeys="true" : 자동으로 생성된 키를 사용   -->
+    <!--    keyProperty="email" :  자동 생성된 키 값을 email 프로퍼티에 매핑 -->
+    <insert id="signup" useGeneratedKeys="true" keyProperty="email">
+        insert into user (email, password, name)
+        values (#{email}, #{password}, #{name})
+    </insert>
+
+    <!--  이 쿼리의 결과를 com.lotto.dao.UserMapper 클래스에 매핑 -->
+    <select id="login" resultType="User">
+        select * from user where email = #{email} and password = #{password}
+    </select>
+
+    <!--    유저 정보 수정 쿼리-->
+    <update id="update">
+        update user set password = #{password}, name = #{name} where id = #{id}
+    </update>
+
+    <!--    회원 탈퇴 쿼리-->
+    <update id="delete">
+        delete from user where email = #{email}
+    </update>
+
+    <!--    회원 탈퇴 유저 저장 쿼리-->
+    <insert id="outUserSave" useGeneratedKeys="true">
+        insert into outUser(email, name) select email, name from user where email = #{email}
+    </insert>
+</mapper>

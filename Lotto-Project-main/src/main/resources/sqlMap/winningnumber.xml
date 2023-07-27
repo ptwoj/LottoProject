@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lotto.dao.WinningNumberMapper">
+        <!-- 로또 번호 조회 -->
+        <select id="findByDraw" resultType="String" parameterType="int">
+                SELECT winning_numbers FROM winningnumber WHERE draw_date = #{drawDate} limit 1
+        </select>
+
+<!--        <select id="userLottoNumber" resultType="com.lotto.domain.dto.ResultNumber">-->
+<!--                SELECT id,draw_date,lotto_numbers FROM lottonumber WHERE email = #{email} and draw_date = #{drawDate}-->
+<!--        </select>-->
+<!--        <select id="findAll" resultType="com.lotto.domain.dto.ResultNumber">-->
+<!--                select lotto_numbers from lottonumber where draw_date = #{drawDate}-->
+<!--        </select>-->
+</mapper>
+
+

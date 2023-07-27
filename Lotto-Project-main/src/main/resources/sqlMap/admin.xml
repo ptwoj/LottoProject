@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--SQL 매핑 파일의 루트 요소, 해당 매핑 파일이 com.lotto.dao.UserMapper 인터페이스와 매핑 -->
+<mapper namespace="com.lotto.dao.AdminMapper">
+
+    <!--  전체 회원 리스트 반환 쿼리-->
+    <select id="findAll" resultType="User">
+        select * from user
+    </select>
+
+    <!-- 회원 정보 삭제 쿼리-->
+    <update id="delete">
+        delete from user where id = #{id}
+    </update>
+
+    <!--  OutUser 테이블에 저장 쿼리-->
+    <insert id="outUserSave" useGeneratedKeys="true">
+        insert into outUser(email, name) select email, name from user where id = #{id}
+    </insert>
+
+    <!--  삭제된 최신 순으로 정렬 쿼리-->
+    <select id="findAllByOutUser" resultType="OutUser">
+        select * from outUser order by create_at desc
+    </select>
+
+    <!--  금액이 큰 사용자 순으로 정렬 쿼리-->
+    <select id="findAllByMoney" resultType="User">
+        select * from user order by money desc
+    </select>
+    
+</mapper>

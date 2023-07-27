@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+
+
+        <!--        com.lotto.domain.dto.User 클래스에 대한 별칭을 User로 지정-->
+        <typeAlias type="com.lotto.domain.dto.User" alias="User"/>
+        <typeAlias type="com.lotto.domain.dto.OutUser" alias="OutUser"/>
+        <typeAlias type="com.lotto.domain.dto.LottoNumber"
+                   alias="LottoNumber"/>
+        <typeAlias type="com.lotto.domain.dto.Main"
+                   alias="Main"/>
+    </typeAliases>
+
+<!--    <typeAliases>-->
+<!--        <typeAlias type="com.lotto.domain.dto.WinningNumber"-->
+<!--                   alias="WinningNumber" />-->
+<!--    </typeAliases>-->
+
+</configuration>
